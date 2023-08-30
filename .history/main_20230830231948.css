@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+#preloader {
+    background-color: #000;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    z-index: 100000;
+}
+
+.gradient-loader {
+    width: 400px;
+    height: 400px;
+    flex-shrink: 0;
+    border-radius: 400px;
+    background: conic-gradient(from 90deg at 50% 50%, #D3FF56 359.9639940261841deg, rgba(0, 175, 170, 0.00) 360deg);
+}
