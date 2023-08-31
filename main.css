@@ -141,4 +141,51 @@ body::before {
 .startingDiv h3:hover {
     letter-spacing: 20px;
     font-size: 45px;
+    cursor: pointer;
+}
+
+/* optionmenu table styles */
+table {
+    z-index: 100;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+
+table td {
+    padding: 15px;
+    transition: 0.3s;
+}
+
+table td:hover {
+    font-size: 35px;
+    color: var(--main-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* alphabets suggestions */
+.Alphbets {
+    position: absolute;
+    left: 50%;
+    top: 150%;
+    transform: translate(-50%, 17px) rotate(180deg);
+    width: 550px;
+    z-index: 6;
+    transition: 0.5s;
+}
+
+.buttonchoices {
+    position: absolute;
+    width: 800px;
+    z-index: 5;
+    left: 100%;
+    top: -100%;
+    transform: rotate(45deg);
+    transition: 0.5s;
 }
