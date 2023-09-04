@@ -453,29 +453,6 @@ span:hover {
     height: 45px;
     background-color: var(--main-color);
     bottom: 56%;
-    left: 34.5%;
+    left: 24.5%;
     border-radius: 5px;
     transform: rotate(-45deg);
-}
-
-.manll {
-    position: absolute;
-    width: 10px;
-    height: 56px;
-    background-color: var(--main-color);
-    bottom: 39%;
-    left: 26%;
-    border-radius: 5px;
-    transform: rotate(27deg);
-}
-
-.manrl {
-    position: absolute;
-    width: 10px;
-    height: 56px;
-    background-color: var(--main-color);
-    bottom: 39%;
-    left: 33%;
-    border-radius: 5px;
-    transform: rotate(-27deg);
-}

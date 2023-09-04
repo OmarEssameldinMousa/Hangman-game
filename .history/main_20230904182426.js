@@ -1,17 +1,5 @@
-import { fetchData } from "./glosary.js";
-window.addEventListener("load", async function () {
-    loader.style.display = "none";
-    try {
-        const result = await fetchData();
-        mywords = result;
-        // Proceed with other game setup logic here
-    } catch (error) {
-        console.error("Error fetching data:", error);
-    }
-    startTheGame()
-})
 
-let mywords = []
+let index = Math.floor(Math.random() * 10)
 let loader = document.getElementById("preloader")
 let startbutton = document.querySelector(".startingDiv h3")
 let startimage = document.querySelector(".startingDiv .startGame")
@@ -38,18 +26,6 @@ startbutton.addEventListener("click", async function () {
     }, 500)
 })
 
-function fadeIn(element) {
-    var opacity = 0;
-    var interval = setInterval(function () {
-        if (opacity < 1) {
-            opacity += 0.02;
-            element.style.opacity = opacity;
-        } else {
-            clearInterval(interval);
-        }
-    }, 20);
-}
-
 async function buildTable(data) {
     for (var i = 0; i < data.length; i++) {
         var row = document.createElement("tr");
@@ -61,12 +37,38 @@ async function buildTable(data) {
         table.appendChild(row);
     }
     document.body.appendChild(table);
+    function fadeIn(element) {
+        var opacity = 0;
+        var interval = setInterval(function () {
+            if (opacity < 1) {
+                opacity += 0.02;
+                element.style.opacity = opacity;
+            } else {
+                clearInterval(interval);
+            }
+        }, 20);
+    }
 
-
+    var elementToFadeIn = document.getElementById("element");
     fadeIn(table);
 }
 
+let mywords = []
 
+async function fetchData() {
+    return new Promise((resolve, reject) => {
+        let myRequest = new XMLHttpRequest()
+        myRequest.onload = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                resolve(JSON.parse(this.responseText))
+            } else {
+                reject(Error("No Data found"))
+            }
+        }
+        myRequest.open("GET", "words.json")
+        myRequest.send()
+    });
+}
 
 
 function choosen_word(category, index) {
@@ -82,6 +84,17 @@ var tableData = [
     ["colors"]
 ];
 
+window.addEventListener("load", async function () {
+    loader.style.display = "none";
+    startTheGame()
+    try {
+        const result = await fetchData();
+        mywords = result;
+        // Proceed with other game setup logic here
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+})
 
 function countDownStart() {
     let div = document.querySelector(".counter-div")
@@ -146,7 +159,17 @@ async function showChoices(category) {
     }
     suggestesDiv.appendChild(letterChoicesDiv);
     document.body.appendChild(suggestesDiv);
-
+    function fadeIn(element) {
+        var opacity = 0;
+        var interval = setInterval(function () {
+            if (opacity < 1) {
+                opacity += 0.02;
+                element.style.opacity = opacity;
+            } else {
+                clearInterval(interval);
+            }
+        }, 20);
+    }
     async function f() {
         let spanset = Array.from(letterChoicesDiv.children)
         for (let i = 0; i < spanset.length; i++) {
@@ -166,40 +189,10 @@ function FinalWord(category) {
         finalWordDiv.appendChild(finalLetterDiv);
     }
     document.body.appendChild(finalWordDiv);
-    fadeIn(finalWordDiv)
 }
 
 async function DrawHangMan() {
-    let mainDrawingDiv = document.createElement("div")
-    mainDrawingDiv.className = "mainDrawingDiv"
-    document.body.appendChild(mainDrawingDiv)
 
-    let createPart = (className) => {
-        let part = document.createElement("div");
-        part.className = className;
-        return part;
-    };
-
-    let components = [
-        "base",
-        "bar",
-        "hangbar",
-        "manhead",
-        "manbody",
-        "manla",
-        "manra",
-        "manll",
-        "manrl",
-        "hangrope"
-    ];
-
-    let error_counter = 0;
-    document.addEventListener("click", function () {
-        if (error_counter < components.length) {
-            mainDrawingDiv.appendChild(createPart(components[error_counter]));
-            error_counter++;
-        }
-    })
 }
 
 
@@ -221,16 +214,14 @@ async function playground(category) {
     Alphbetsimg.style.top = "51%"
     Alphbetsimg.style.left = "50%"
     await new Promise(resolve => setTimeout(resolve, 300));
-    let index = Math.floor(Math.random() * 10)
-    // choosen_word(category, index);
+    choosen_word(category, index);
     await new Promise(resolve => setTimeout(resolve, 300));
     countDownStart()
     await new Promise(resolve => setTimeout(resolve, 3000));
     showChoices(category)
-    FinalWord(mywords[category][index])
+    FinalWord(category)
     await new Promise(resolve => setTimeout(resolve, 5000));
     createTimerStructure()
-    DrawHangMan()
 }
 
 document.addEventListener("click", function (e) {

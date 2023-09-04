@@ -1,4 +1,17 @@
-import { fetchData } from "./glosary.js";
+async function fetchData() {
+    return new Promise((resolve, reject) => {
+        let myRequest = new XMLHttpRequest()
+        myRequest.onload = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                resolve(JSON.parse(this.responseText))
+            } else {
+                reject(Error("No Data found"))
+            }
+        }
+        myRequest.open("GET", "words.json")
+        myRequest.send()
+    });
+}
 window.addEventListener("load", async function () {
     loader.style.display = "none";
     try {
@@ -11,7 +24,6 @@ window.addEventListener("load", async function () {
     startTheGame()
 })
 
-let mywords = []
 let loader = document.getElementById("preloader")
 let startbutton = document.querySelector(".startingDiv h3")
 let startimage = document.querySelector(".startingDiv .startGame")
@@ -66,6 +78,7 @@ async function buildTable(data) {
     fadeIn(table);
 }
 
+let mywords = []
 
 
 
@@ -170,35 +183,50 @@ function FinalWord(category) {
 }
 
 async function DrawHangMan() {
-    let mainDrawingDiv = document.createElement("div")
-    mainDrawingDiv.className = "mainDrawingDiv"
-    document.body.appendChild(mainDrawingDiv)
+    let basef = () => {
+        let base = document.createElement("div")
+        base.className = "base"
+    }
+    let standingbarf = () => {
+        let standingbar = document.createElement("div")
+        standingbar.className = "bar"
+    }
+    let hangbarf = () => {
+        let Hangbar = document.createElement("div")
+        Hangbar.className = "hangbar"
+    }
+    let ropf = () => {
+        let rope = document.createElement.createElement("div")
+        rope.className = "hangrope"
+    }
+    let manheadf = () => {
+        let manhead = document.createElement("div")
+        manhead.className = "manhead"
+    }
+    let manbodyf = () => {
+        let manbody = document.createElement("div")
+        manbody.className = "manbody"
+    }
+    let manleftarmf = () => {
+        let manleftarm = document.createElement("div")
+        manleftarm.className = "manla"
+    }
+    let manrightarmf = () => {
+        let manrightarm = document.createElement("div")
+        manrightarm.className = "manra"
+    }
+    let manleftleg = () => {
+        let manleftleg = document.createElement("div")
+        manleftleg.className = "manll"
+    }
+    let manrightleg = () => {
+        let manrightleg = document.createElement("div")
+        manrightleg.className = "manrl"
+    }
 
-    let createPart = (className) => {
-        let part = document.createElement("div");
-        part.className = className;
-        return part;
-    };
 
-    let components = [
-        "base",
-        "bar",
-        "hangbar",
-        "manhead",
-        "manbody",
-        "manla",
-        "manra",
-        "manll",
-        "manrl",
-        "hangrope"
-    ];
-
-    let error_counter = 0;
     document.addEventListener("click", function () {
-        if (error_counter < components.length) {
-            mainDrawingDiv.appendChild(createPart(components[error_counter]));
-            error_counter++;
-        }
+
     })
 }
 
@@ -222,15 +250,14 @@ async function playground(category) {
     Alphbetsimg.style.left = "50%"
     await new Promise(resolve => setTimeout(resolve, 300));
     let index = Math.floor(Math.random() * 10)
-    // choosen_word(category, index);
+    choosen_word(category, index);
     await new Promise(resolve => setTimeout(resolve, 300));
     countDownStart()
     await new Promise(resolve => setTimeout(resolve, 3000));
     showChoices(category)
-    FinalWord(mywords[category][index])
+    FinalWord(category)
     await new Promise(resolve => setTimeout(resolve, 5000));
     createTimerStructure()
-    DrawHangMan()
 }
 
 document.addEventListener("click", function (e) {

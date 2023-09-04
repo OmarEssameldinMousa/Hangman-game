@@ -184,13 +184,13 @@ async function DrawHangMan() {
         "base",
         "bar",
         "hangbar",
+        "hangrope",
         "manhead",
         "manbody",
         "manla",
         "manra",
         "manll",
-        "manrl",
-        "hangrope"
+        "manrl"
     ];
 
     let error_counter = 0;

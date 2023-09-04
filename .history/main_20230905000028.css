@@ -418,64 +418,10 @@ span:hover {
 
 .manhead {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background-color: var(--main-color);
-    bottom: 66%;
-    left: 26%;
-}
-
-.manbody {
-    position: absolute;
-    width: 19px;
-    height: 60px;
-    background-color: var(--main-color);
-    bottom: 51%;
-    left: 28.5%;
-    border-radius: 5px;
-}
-
-.manla {
-    position: absolute;
-    width: 10px;
-    height: 45px;
-    background-color: var(--main-color);
-    bottom: 56%;
-    left: 24.5%;
-    border-radius: 5px;
-    transform: rotate(45deg);
-}
-
-.manra {
-    position: absolute;
-    width: 10px;
-    height: 45px;
-    background-color: var(--main-color);
-    bottom: 56%;
-    left: 34.5%;
-    border-radius: 5px;
-    transform: rotate(-45deg);
-}
-
-.manll {
-    position: absolute;
-    width: 10px;
-    height: 56px;
-    background-color: var(--main-color);
-    bottom: 39%;
-    left: 26%;
-    border-radius: 5px;
-    transform: rotate(27deg);
-}
-
-.manrl {
-    position: absolute;
-    width: 10px;
-    height: 56px;
-    background-color: var(--main-color);
-    bottom: 39%;
-    left: 33%;
-    border-radius: 5px;
-    transform: rotate(-27deg);
+    bottom: 65%;
+    left: 30%;
 }

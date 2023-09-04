@@ -184,21 +184,19 @@ async function DrawHangMan() {
         "base",
         "bar",
         "hangbar",
+        "hangrope",
         "manhead",
         "manbody",
         "manla",
         "manra",
         "manll",
-        "manrl",
-        "hangrope"
+        "manrl"
     ];
 
     let error_counter = 0;
     document.addEventListener("click", function () {
-        if (error_counter < components.length) {
-            mainDrawingDiv.appendChild(createPart(components[error_counter]));
-            error_counter++;
-        }
+        mainDrawingDiv.appendChild(components[error_counter]())
+        error_counter++;
     })
 }
 
@@ -222,7 +220,7 @@ async function playground(category) {
     Alphbetsimg.style.left = "50%"
     await new Promise(resolve => setTimeout(resolve, 300));
     let index = Math.floor(Math.random() * 10)
-    // choosen_word(category, index);
+    choosen_word(category, index);
     await new Promise(resolve => setTimeout(resolve, 300));
     countDownStart()
     await new Promise(resolve => setTimeout(resolve, 3000));
