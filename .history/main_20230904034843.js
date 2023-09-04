@@ -82,17 +82,7 @@ window.addEventListener("load", async function () {
 })
 
 function countDownStart() {
-    let div = document.querySelector(".counter-div")
-    loader.style.display = "block";
-    div.innerHTML = 3;
-    function countdown() {
-        div.innerHTML -= 1;
-        if (div.innerHTML === "0") {
-            loader.style.display = "none";
-            clearInterval(counter)
-        }
-    }
-    let counter = setInterval(countdown, 1000)
+
 }
 
 startbutton.addEventListener("click", function () {
@@ -125,7 +115,6 @@ async function playground(category) {
     Alphbetsimg.style.left = "50%"
     await new Promise(resolve => setTimeout(resolve, 300));
     choosen_word(category, index);
-    countDownStart()
 }
 
 document.addEventListener("click", function (e) {

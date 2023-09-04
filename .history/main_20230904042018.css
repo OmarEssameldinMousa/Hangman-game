@@ -90,7 +90,14 @@ body::before {
     align-items: center;
 }
 
-.counter-div {
+.inner-circle-div {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
     position: absolute;
     color: white;
     animation: hoooof 1s ease-in-out infinite alternate;
@@ -117,7 +124,7 @@ body::before {
     }
 
     100% {
-        font-size: 50px;
+        font-size: 40px;
     }
 }
 

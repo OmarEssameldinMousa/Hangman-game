@@ -90,7 +90,9 @@ body::before {
     align-items: center;
 }
 
-.counter-div {
+.inner-circle-div {
+
+
     position: absolute;
     color: white;
     animation: hoooof 1s ease-in-out infinite alternate;

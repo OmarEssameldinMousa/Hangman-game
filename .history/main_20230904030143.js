@@ -1,6 +1,4 @@
 
-let index = Math.floor(Math.random() * 10)
-let loader = document.getElementById("preloader")
 let startbutton = document.querySelector(".startingDiv h3")
 let startimage = document.querySelector(".startingDiv .startGame")
 let optionmenuimg = document.querySelector(".optionmenuimg")
@@ -77,23 +75,10 @@ var tableData = [
 ];
 
 window.addEventListener("load", async function () {
+    let loader = document.getElementById("preloader")
     loader.style.display = "none";
     startTheGame()
 })
-
-function countDownStart() {
-    let div = document.querySelector(".counter-div")
-    loader.style.display = "block";
-    div.innerHTML = 3;
-    function countdown() {
-        div.innerHTML -= 1;
-        if (div.innerHTML === "0") {
-            loader.style.display = "none";
-            clearInterval(counter)
-        }
-    }
-    let counter = setInterval(countdown, 1000)
-}
 
 startbutton.addEventListener("click", function () {
     startbutton.style.left = "110%"
@@ -124,8 +109,8 @@ async function playground(category) {
     Alphbetsimg.style.top = "55%"
     Alphbetsimg.style.left = "50%"
     await new Promise(resolve => setTimeout(resolve, 300));
+    let index = Math.floor(Math.random() * 10)
     choosen_word(category, index);
-    countDownStart()
 }
 
 document.addEventListener("click", function (e) {

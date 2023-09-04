@@ -77,12 +77,12 @@ var tableData = [
 ];
 
 window.addEventListener("load", async function () {
-    loader.style.display = "none";
+    // loader.style.display = "none";
     startTheGame()
 })
 
 function countDownStart() {
-    let div = document.querySelector(".counter-div")
+    let div = document.querySelector(".inner-circle")
     loader.style.display = "block";
     div.innerHTML = 3;
     function countdown() {

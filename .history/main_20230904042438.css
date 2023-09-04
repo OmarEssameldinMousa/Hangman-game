@@ -43,6 +43,7 @@ body::before {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 500000000;
 }
 
 .outer-circle {

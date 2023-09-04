@@ -85,21 +85,21 @@ body::before {
     border-right: 5px solid white;
     position: absolute;
     animation: loadingcircle 1s linear infinite reverse;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.counter-div {
-    position: absolute;
     color: white;
-    animation: hoooof 1s ease-in-out infinite alternate;
-    font-size: 30px;
-    text-align: center;
-    /* animation-play-state: paused; */
 }
 
-
+.inner-circle:first-child {
+    border-radius: 50%;
+    width: 50;
+    height: 50px;
+    border-bottom: 5px solid white;
+    border-top: 5px solid white;
+    border-left: 5px solid transparent;
+    border-right: 5px solid white;
+    position: absolute;
+    animation: loadingcircle 1s linear infinite reverse;
+    color: white;
+}
 
 @keyframes loadingcircle {
     0% {
@@ -108,16 +108,6 @@ body::before {
 
     100% {
         transform: rotate(360deg);
-    }
-}
-
-@keyframes hoooof {
-    0% {
-        font-size: 30px;
-    }
-
-    100% {
-        font-size: 50px;
     }
 }
 

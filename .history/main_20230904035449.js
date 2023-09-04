@@ -82,9 +82,8 @@ window.addEventListener("load", async function () {
 })
 
 function countDownStart() {
-    let div = document.querySelector(".counter-div")
+    let div = document.querySelector(".inner-circle")
     loader.style.display = "block";
-    div.innerHTML = 3;
     function countdown() {
         div.innerHTML -= 1;
         if (div.innerHTML === "0") {

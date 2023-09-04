@@ -1,6 +1,4 @@
 
-let index = Math.floor(Math.random() * 10)
-let loader = document.getElementById("preloader")
 let startbutton = document.querySelector(".startingDiv h3")
 let startimage = document.querySelector(".startingDiv .startGame")
 let optionmenuimg = document.querySelector(".optionmenuimg")
@@ -8,28 +6,18 @@ var table = document.createElement("table");
 let Alphbetsimg = document.querySelector(".Alphbets")
 let button_choicesimg = document.querySelector(".buttonchoices")
 
-let mywords = []
-new Promise((resolve, reject) => {
-    let myRequest = new XMLHttpRequest()
-    myRequest.onload = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            resolve(JSON.parse(this.responseText))
-        }
-        else {
-            reject(Error("No Data found"))
-        }
-    }
-    myRequest.open("GET", "words.json")
-    myRequest.send()
-})
-    .then((result) => {
-        mywords = result
-    })
-
 
 // function to select a random word from the chosen category
-function choosen_word(category, index) {
-    console.log(mywords[category][index])
+var myword = function () {
+    fetch("words.json")
+        .then((result) => {
+            let mywords = result.json();
+            // Use result.json() to parse the JSON data
+        })
+        .then(mywords => {
+            return mywords
+        })
+
 }
 
 
@@ -77,23 +65,10 @@ var tableData = [
 ];
 
 window.addEventListener("load", async function () {
+    let loader = document.getElementById("preloader")
     loader.style.display = "none";
     startTheGame()
 })
-
-function countDownStart() {
-    let div = document.querySelector(".counter-div")
-    loader.style.display = "block";
-    div.innerHTML = 3;
-    function countdown() {
-        div.innerHTML -= 1;
-        if (div.innerHTML === "0") {
-            loader.style.display = "none";
-            clearInterval(counter)
-        }
-    }
-    let counter = setInterval(countdown, 1000)
-}
 
 startbutton.addEventListener("click", function () {
     startbutton.style.left = "110%"
@@ -123,9 +98,6 @@ async function playground(category) {
     Alphbetsimg.style.transform = "translate(-50%, 17px) rotate(360deg)"
     Alphbetsimg.style.top = "55%"
     Alphbetsimg.style.left = "50%"
-    await new Promise(resolve => setTimeout(resolve, 300));
-    choosen_word(category, index);
-    countDownStart()
 }
 
 document.addEventListener("click", function (e) {

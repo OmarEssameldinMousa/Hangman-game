@@ -82,17 +82,17 @@ window.addEventListener("load", async function () {
 })
 
 function countDownStart() {
-    let div = document.querySelector(".counter-div")
-    loader.style.display = "block";
-    div.innerHTML = 3;
+    let div = document.querySelector(".inner-circle")
+
     function countdown() {
         div.innerHTML -= 1;
         if (div.innerHTML === "0") {
-            loader.style.display = "none";
             clearInterval(counter)
         }
     }
+
     let counter = setInterval(countdown, 1000)
+
 }
 
 startbutton.addEventListener("click", function () {
