@@ -94,7 +94,7 @@ function countDownStart() {
 }
 
 
-function createTimerStructure(currenttime) {
+function createTimerStructure() {
     const timerContainer = document.createElement('div');
     timerContainer.id = 'timer';
     const timerCircles = document.createElement('div');
@@ -113,19 +113,6 @@ function createTimerStructure(currenttime) {
     timerContainer.appendChild(timerCircles);
     timerContainer.appendChild(counterDiv);
     document.body.appendChild(timerContainer);
-    function countDownStartTimer() {
-        timerContainer.style.display = "flex";
-        counterDiv.innerHTML = 120;
-        function countdown() {
-            counterDiv.innerHTML -= 1;
-            if (counterDiv.innerHTML === "0") {
-                timerContainer.style.display = "none";
-                clearInterval(counter)
-            }
-        }
-        let counter = setInterval(countdown, 1000)
-    }
-    countDownStartTimer()
 }
 
 startbutton.addEventListener("click", function () {
@@ -166,9 +153,6 @@ async function playground(category) {
     }
     choosen_word(category, index);
     countDownStart()
-
-    await new Promise(resolve => setTimeout(resolve, 5000));
-    createTimerStructure()
 }
 
 document.addEventListener("click", function (e) {

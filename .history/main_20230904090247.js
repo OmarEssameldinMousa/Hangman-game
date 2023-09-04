@@ -114,12 +114,13 @@ function createTimerStructure(currenttime) {
     timerContainer.appendChild(counterDiv);
     document.body.appendChild(timerContainer);
     function countDownStartTimer() {
-        timerContainer.style.display = "flex";
-        counterDiv.innerHTML = 120;
+        let div = document.querySelector(".timer .counter-div")
+        loader.style.display = "flex";
+        div.innerHTML = 120;
         function countdown() {
-            counterDiv.innerHTML -= 1;
-            if (counterDiv.innerHTML === "0") {
-                timerContainer.style.display = "none";
+            div.innerHTML -= 1;
+            if (div.innerHTML === "0") {
+                loader.style.display = "none";
                 clearInterval(counter)
             }
         }

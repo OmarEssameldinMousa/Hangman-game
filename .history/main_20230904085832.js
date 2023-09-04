@@ -79,10 +79,10 @@ window.addEventListener("load", async function () {
     startTheGame()
 })
 
-function countDownStart() {
+function countDownStart(currenttime) {
     let div = document.querySelector(".counter-div")
     loader.style.display = "flex";
-    div.innerHTML = 5;
+    div.innerHTML = currenttime;
     function countdown() {
         div.innerHTML -= 1;
         if (div.innerHTML === "0") {
@@ -113,19 +113,7 @@ function createTimerStructure(currenttime) {
     timerContainer.appendChild(timerCircles);
     timerContainer.appendChild(counterDiv);
     document.body.appendChild(timerContainer);
-    function countDownStartTimer() {
-        timerContainer.style.display = "flex";
-        counterDiv.innerHTML = 120;
-        function countdown() {
-            counterDiv.innerHTML -= 1;
-            if (counterDiv.innerHTML === "0") {
-                timerContainer.style.display = "none";
-                clearInterval(counter)
-            }
-        }
-        let counter = setInterval(countdown, 1000)
-    }
-    countDownStartTimer()
+    countDownStart(currenttime)
 }
 
 startbutton.addEventListener("click", function () {
@@ -165,10 +153,10 @@ async function playground(category) {
         console.error("Error fetching data:", error);
     }
     choosen_word(category, index);
-    countDownStart()
+    countDownStart(5)
 
-    await new Promise(resolve => setTimeout(resolve, 5000));
-    createTimerStructure()
+    await new Promise(resolve => setTimeout(resolve, 100));
+    createTimerStructure(120)
 }
 
 document.addEventListener("click", function (e) {

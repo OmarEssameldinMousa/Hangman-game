@@ -9,21 +9,23 @@ let Alphbetsimg = document.querySelector(".Alphbets")
 let button_choicesimg = document.querySelector(".buttonchoices")
 
 let mywords = []
-
-async function fetchData() {
-    return new Promise((resolve, reject) => {
-        let myRequest = new XMLHttpRequest()
-        myRequest.onload = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                resolve(JSON.parse(this.responseText))
-            } else {
-                reject(Error("No Data found"))
-            }
+new Promise((resolve, reject) => {
+    let myRequest = new XMLHttpRequest()
+    myRequest.onload = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            resolve(JSON.parse(this.responseText))
         }
-        myRequest.open("GET", "words.json")
-        myRequest.send()
-    });
-}
+        else {
+            reject(Error("No Data found"))
+        }
+    }
+    myRequest.open("GET", "words.json")
+    myRequest.send()
+})
+    .then((result) => {
+        mywords = result
+    })
+
 
 // function to select a random word from the chosen category
 function choosen_word(category, index) {
@@ -94,39 +96,46 @@ function countDownStart() {
 }
 
 
-function createTimerStructure(currenttime) {
+function createTimerStructure() {
+    // Create the main container
     const timerContainer = document.createElement('div');
     timerContainer.id = 'timer';
+
+    // Create the timer circles container
     const timerCircles = document.createElement('div');
     timerCircles.className = 'timer-circles';
+
+    // Create the outer circle
     const outerCircle = document.createElement('div');
     outerCircle.className = 'timer-outer-circle';
+
+    // Create the middle circle
     const middleCircle = document.createElement('div');
     middleCircle.className = 'timer-middle-circle';
+
+    // Create the inner circle
     const innerCircle = document.createElement('div');
     innerCircle.className = 'timer-inner-circle';
+
+    // Append the circles to their parent elements
     middleCircle.appendChild(innerCircle);
     outerCircle.appendChild(middleCircle);
     timerCircles.appendChild(outerCircle);
+
+    // Create the counter div
     const counterDiv = document.createElement('div');
     counterDiv.className = 'counter-div';
+
+    // Append everything to the main container
     timerContainer.appendChild(timerCircles);
     timerContainer.appendChild(counterDiv);
+
+    // Append the main container to the document body or any other desired parent element
     document.body.appendChild(timerContainer);
-    function countDownStartTimer() {
-        timerContainer.style.display = "flex";
-        counterDiv.innerHTML = 120;
-        function countdown() {
-            counterDiv.innerHTML -= 1;
-            if (counterDiv.innerHTML === "0") {
-                timerContainer.style.display = "none";
-                clearInterval(counter)
-            }
-        }
-        let counter = setInterval(countdown, 1000)
-    }
-    countDownStartTimer()
 }
+
+// Call the function to create the timer structure
+
 
 startbutton.addEventListener("click", function () {
     startbutton.style.left = "110%"
@@ -157,18 +166,8 @@ async function playground(category) {
     Alphbetsimg.style.top = "55%"
     Alphbetsimg.style.left = "50%"
     await new Promise(resolve => setTimeout(resolve, 300));
-    try {
-        const result = await fetchData();
-        mywords = result;
-        // Proceed with other game setup logic here
-    } catch (error) {
-        console.error("Error fetching data:", error);
-    }
     choosen_word(category, index);
     countDownStart()
-
-    await new Promise(resolve => setTimeout(resolve, 5000));
-    createTimerStructure()
 }
 
 document.addEventListener("click", function (e) {

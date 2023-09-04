@@ -119,7 +119,7 @@ function createTimerStructure(currenttime) {
         function countdown() {
             counterDiv.innerHTML -= 1;
             if (counterDiv.innerHTML === "0") {
-                timerContainer.style.display = "none";
+                loader.style.display = "none";
                 clearInterval(counter)
             }
         }

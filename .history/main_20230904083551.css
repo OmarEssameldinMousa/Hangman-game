@@ -215,7 +215,7 @@ table td:hover {
 
 /* Timer Stylyzing */
 #timer {
-    /* background-color: var(--main-color); */
+    background-color: var(--main-color);
     height: 100px;
     width: 100px;
     z-index: 1000;
@@ -223,8 +223,8 @@ table td:hover {
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 40px;
-    left: 40px;
+    bottom: 0;
+    left: 0;
 }
 
 .timer-circles {
@@ -238,8 +238,8 @@ table td:hover {
 
 .timer-outer-circle {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-bottom: 5px solid white;
     border-top: 5px solid white;
     border-left: 5px solid white;
@@ -251,12 +251,12 @@ table td:hover {
     align-items: center;
 }
 
-.timer-middle-circle {
+.timer-midlle-circle {
     border-radius: 50%;
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
     border-bottom: 5px solid white;
-    border-top: 5px solid var(--main-color);
+    border-top: 5px solid red;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     position: absolute;
@@ -268,8 +268,8 @@ table td:hover {
 
 .timer-inner-circle {
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     border-bottom: 5px solid white;
     border-top: 5px solid white;
     border-left: 5px solid transparent;
@@ -281,22 +281,11 @@ table td:hover {
     align-items: center;
 }
 
-#timer .counter-div {
+.timer .counter-div {
     position: absolute;
-    color: var(--main-color);
-    animation: hof 1s ease-in-out infinite alternate;
-    font-size: 10px;
+    color: white;
+    animation: hoooof 1s ease-in-out infinite alternate;
+    font-size: 20px;
     text-align: center;
-    font-weight: bold;
     /* animation-play-state: paused; */
-}
-
-@keyframes hof {
-    0% {
-        font-size: 20px;
-    }
-
-    100% {
-        font-size: 25px;
-    }
 }

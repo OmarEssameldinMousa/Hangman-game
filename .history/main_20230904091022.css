@@ -256,7 +256,7 @@ table td:hover {
     width: 140px;
     height: 140px;
     border-bottom: 5px solid white;
-    border-top: 5px solid var(--main-color);
+    border-top: 5px solid red;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     position: absolute;
@@ -281,22 +281,11 @@ table td:hover {
     align-items: center;
 }
 
-#timer .counter-div {
+.timer .counter-div {
     position: absolute;
-    color: var(--main-color);
-    animation: hof 1s ease-in-out infinite alternate;
+    color: red;
+    animation: hoooof 1s ease-in-out infinite alternate;
     font-size: 10px;
     text-align: center;
-    font-weight: bold;
     /* animation-play-state: paused; */
-}
-
-@keyframes hof {
-    0% {
-        font-size: 20px;
-    }
-
-    100% {
-        font-size: 25px;
-    }
 }
