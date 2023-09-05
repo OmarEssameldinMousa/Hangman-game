@@ -493,35 +493,18 @@ span:hover {
     background-image: url("images/image-from-rawpixel-id-6575848-png.png");
     position: absolute;
     left: 50%;
-    top: -60%;
+    top: 50%;
     transform: translate(-50%, -50%);
     background-repeat: no-repeat;
     background-size: cover;
-    width: 1000px;
+    width: 700px;
     height: 700px;
     z-index: 10000000;
-    transition: 0.3s;
 }
 
 .congratword {
     position: absolute;
-    left: 52%;
-    top: 41%;
+    left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
-    font-size: 43px;
-}
-
-button {
-    position: absolute;
-    left: 52%;
-    top: 58%;
-    transform: translate(-50%, -50%);
-    border: none;
-    width: 85px;
-    height: 50px;
-    color: var(--main-color);
-    border-radius: 10px;
-    border-bottom: 5px solid var(--main-color);
-    font-size: 20px;
-    font-weight: bold;
 }

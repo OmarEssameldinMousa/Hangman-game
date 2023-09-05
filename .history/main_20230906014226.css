@@ -493,14 +493,13 @@ span:hover {
     background-image: url("images/image-from-rawpixel-id-6575848-png.png");
     position: absolute;
     left: 50%;
-    top: -60%;
+    top: 50%;
     transform: translate(-50%, -50%);
     background-repeat: no-repeat;
     background-size: cover;
     width: 1000px;
     height: 700px;
     z-index: 10000000;
-    transition: 0.3s;
 }
 
 .congratword {

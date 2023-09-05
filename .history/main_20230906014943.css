@@ -500,7 +500,7 @@ span:hover {
     width: 1000px;
     height: 700px;
     z-index: 10000000;
-    transition: 0.3s;
+    transition: 0.3;
 }
 
 .congratword {

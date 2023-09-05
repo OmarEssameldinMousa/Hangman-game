@@ -143,16 +143,10 @@ finally {
         function countDownStartTimer() {
             timerContainer.style.display = "flex";
             counterDiv.innerHTML = 60;
-            async function countdown() {
+            function countdown() {
                 counterDiv.innerHTML -= 1;
                 if (counterDiv.innerHTML === "0") {
                     timerContainer.style.display = "none";
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                    createLost()
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                    let maincongrtDIv = document.querySelector(".maincongratDiv")
-                    maincongrtDIv.style.top = "50%"
-
                     clearInterval(counter)
                 }
             }
